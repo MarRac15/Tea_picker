@@ -8,6 +8,7 @@ class AppTheme{
   static const Color accentColor = Color.fromARGB(255, 165, 190, 176);
   static const Color backgroundColor = Color.fromARGB(255, 241, 232, 206);
   static const Color darkBackgroundColor = Color.fromARGB(255, 36, 36, 36);
+  static const Color darkAccentColor = Color.fromARGB(255, 85, 85, 85);
 
   static const TextStyle headline1 = TextStyle(
     fontSize: 20,
@@ -26,7 +27,7 @@ class AppTheme{
       brightness: Brightness.dark,
       primaryColor: primaryColor,
       colorScheme: ColorScheme.fromSwatch().copyWith(
-        secondary: accentColor,
+        secondary: darkAccentColor,
         background: darkBackgroundColor,
         brightness: Brightness.dark
         ), 

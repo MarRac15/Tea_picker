@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tea_picker/providers/changeThemeNotifier.dart';
 import 'package:tea_picker/style/theme.dart';
+import 'package:tea_picker/views/creator_screens/additives_page.dart';
 import 'package:tea_picker/views/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,7 +18,10 @@ class MainApp extends ConsumerWidget {
       title: 'Tea Picker',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.getThemeData(themeMode),
-      home: HomePage()
+      home: HomePage(),
+      routes: {
+        '/additives': (_) => AdditivesPage(),
+      }
     );
   }
 }
