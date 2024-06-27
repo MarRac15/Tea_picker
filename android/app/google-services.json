@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1053100711838",
+    "project_id": "teapicker-6a476",
+    "storage_bucket": "teapicker-6a476.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053100711838:android:cf646d6a84017d32c7408f",
+        "android_client_info": {
+          "package_name": "com.example.tea_picker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABAILNKw_5RdxmdZdPC2sbv_jjqGUF93Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

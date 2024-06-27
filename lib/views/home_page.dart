@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tea_picker/providers/changeThemeNotifier.dart';
 import 'package:tea_picker/style/theme.dart';
+import 'package:tea_picker/views/catalog_page.dart';
 import 'package:tea_picker/views/creator_screens/type._page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -34,7 +35,7 @@ class HomePage extends ConsumerWidget {
                 backgroundColor: Theme.of(context).colorScheme.secondary,
               ),
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TypePage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CatalogPage()));
               },
                child: Text('Visit your catalog', style: Theme.of(context).textTheme.bodyLarge)
                ),

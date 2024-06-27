@@ -30,4 +30,28 @@ class Additive {
 
   return additives;
   }
+
+  Additive copyWith({
+    String? name,
+    bool? isSelected,
+  }) {
+    return Additive(
+      name: name ?? this.name,
+      isSelected: isSelected ?? this.isSelected,
+    );
+  }
+
+  Map<String, dynamic> toMap(){
+    return{
+      'name': name,
+      'isSelected': isSelected
+    };
+  }
+
+  static Additive fromMap(Map<String, dynamic> map){
+    return Additive(
+      name: map['name'],
+      isSelected: map['isSelected'],
+      );
+  }
 }

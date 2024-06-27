@@ -17,6 +17,8 @@ class IntensityPage extends ConsumerWidget {
       body: Center(
         child: Column(
           children: [
+            SizedBox(height: 40,),
+            
             ListTile(
               title: Text('Strong', style: Theme.of(context).textTheme.bodyLarge),
               onTap: (){

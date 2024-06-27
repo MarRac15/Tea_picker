@@ -4,8 +4,21 @@ import 'package:tea_picker/style/theme.dart';
 import 'package:tea_picker/views/creator_screens/additives_page.dart';
 import 'package:tea_picker/views/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+    apiKey: 'key',
+    appId: '1:1053100711838:android:cf646d6a84017d32c7408f',
+    messagingSenderId: 'sendid',
+    projectId: 'teapicker-6a476',
+    storageBucket: 'myapp-b9yt18.appspot.com',
+  )
+  );
+  
   runApp(ProviderScope(child: MainApp()));
 }
 

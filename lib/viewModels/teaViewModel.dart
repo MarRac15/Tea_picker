@@ -1,9 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:tea_picker/models/additive.dart';
 import 'package:tea_picker/models/tea.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tea_picker/services/firebase_service.dart';
 
 class TeaViewModel extends StateNotifier<Tea> {
+  final FirebaseService firebase;
 
-  TeaViewModel(): super(Tea(id: '', name: '', type: '', taste: '', mood: '', intensity: '', additives: []));
+  TeaViewModel(this.firebase): super(Tea(name: '', type: '', taste: '', mood: '', intensity: '', additives: [], brewingDate: DateTime.now()));
+
+  void setName(String name){
+    state = state.copyWith(name: name);
+  }
 
   void setType(String type){
     state = state.copyWith(type: type);
@@ -22,8 +30,8 @@ class TeaViewModel extends StateNotifier<Tea> {
   }
 
   void addAdditive(String additive){
-    final updatedAdditives = List<String>.from(state.additives)..add(additive);
-    state = state.copyWith(additives: updatedAdditives);
+    // final updatedAdditives = List<String>.from(state.additives)..add(additive);
+    state = state.copyWith(additives: [...state.additives, additive]);
   }
 
   void removeAdditive(String additive){
@@ -31,12 +39,33 @@ class TeaViewModel extends StateNotifier<Tea> {
     state = state.copyWith(additives: updatedAdditives);
   }
 
+  bool isAdditiveSelected(String additive){
+    return state.additives.contains(additive);
+  }
+
+  void toggleAdditive(String additive) {
+    final updatedAdditives = List<String>.from(state.additives);
+    if (updatedAdditives.contains(additive)) {
+      removeAdditive(additive);
+    } else {
+      addAdditive(additive);
+    }
+  }
+
+   static List<Widget> buildAdditivesList(List<String> additives, TextStyle textStyle) {
+    return additives.map((additive) => Text('- $additive', style: textStyle)).toList();
+  }
+
   void reset(){
-    state = Tea(id: '', name: '', type: '', taste: '', mood: '', intensity: '', additives: []);
+    state = Tea(name: '', type: '', taste: '', mood: '', intensity: '', additives: [], brewingDate: DateTime.now());
+  }
+
+  Future<void> saveTea() async{
+    await firebase.saveTea(state);
   }
 
 }
 
 final teaProvider = StateNotifierProvider<TeaViewModel, Tea>((ref){
-    return TeaViewModel();
+    return TeaViewModel(FirebaseService());
   });

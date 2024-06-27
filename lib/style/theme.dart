@@ -5,6 +5,7 @@ enum AppThemeMode {Light, Dark}
 
 class AppTheme{
   static const Color primaryColor = Color.fromARGB(255, 71, 47, 47);
+  static const Color primaryColorDark = Color.fromARGB(255, 0, 0, 0);
   static const Color accentColor = Color.fromARGB(255, 165, 190, 176);
   static const Color backgroundColor = Color.fromARGB(255, 241, 232, 206);
   static const Color darkBackgroundColor = Color.fromARGB(255, 36, 36, 36);
@@ -14,6 +15,12 @@ class AppTheme{
     fontSize: 20,
     fontWeight: FontWeight.bold,
     color: primaryColor,
+  );
+
+  static const TextStyle headlineDark = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: primaryColorDark,
   );
   
 
@@ -25,14 +32,14 @@ class AppTheme{
   static ThemeData get darkTheme {
     return ThemeData(
       brightness: Brightness.dark,
-      primaryColor: primaryColor,
+      primaryColor: primaryColorDark,
       colorScheme: ColorScheme.fromSwatch().copyWith(
         secondary: darkAccentColor,
         background: darkBackgroundColor,
         brightness: Brightness.dark
         ), 
       textTheme: TextTheme(
-        displayLarge: headline1,
+        displayLarge: headlineDark,
         bodyLarge: bodyText1.copyWith(color: Colors.white),
       ), 
       scaffoldBackgroundColor: darkBackgroundColor

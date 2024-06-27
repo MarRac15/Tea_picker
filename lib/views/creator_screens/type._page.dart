@@ -8,7 +8,9 @@ class TypePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     final teaViewModel = ref.watch(teaProvider.notifier);
+    
     return Scaffold(
     appBar: AppBar(
         title: Text('Choose your base', style: Theme.of(context).textTheme.displayLarge),
