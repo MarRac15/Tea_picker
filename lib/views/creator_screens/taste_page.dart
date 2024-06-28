@@ -14,13 +14,20 @@ class TastePage extends ConsumerWidget {
         title: Text('What should it taste like?', style: Theme.of(context).textTheme.displayLarge),
       ),
       body: Center(
+        
         child: Column(
+          
           children: [
 
             SizedBox(height: 40,),
 
             ListTile(
-              title: Text('Sweet', style: Theme.of(context).textTheme.bodyLarge),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Sweet', style: Theme.of(context).textTheme.bodyLarge)
+                  ]
+                  ),
               onTap: (){
                 teaViewModel.setTaste('sweet');
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> MoodPage()));
@@ -31,7 +38,12 @@ class TastePage extends ConsumerWidget {
             SizedBox(height: 40,),
 
             ListTile(
-              title: Text('Bitter', style: Theme.of(context).textTheme.bodyLarge),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Bitter', style: Theme.of(context).textTheme.bodyLarge)
+                  ]
+                  ),
               onTap: (){
                 teaViewModel.setTaste('bitter');
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> MoodPage()));
@@ -42,7 +54,12 @@ class TastePage extends ConsumerWidget {
             SizedBox(height: 40,),
 
             ListTile(
-              title: Text('Balanced taste', style: Theme.of(context).textTheme.bodyLarge),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Balanced taste', style: Theme.of(context).textTheme.bodyLarge)
+                  ]
+                  ),
               onTap: (){
                 teaViewModel.setTaste('balanced');
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> MoodPage()));

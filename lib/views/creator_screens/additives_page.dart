@@ -12,6 +12,7 @@ class AdditivesPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final additives = Additive.getAdditives();
     final teaViewModel = ref.watch(teaProvider.notifier);
+    final teaState = ref.watch(teaProvider);
   
 
     return Scaffold(
@@ -29,7 +30,7 @@ class AdditivesPage extends ConsumerWidget {
               itemBuilder: ((context, index){
 
                 final additive = additives[index];
-                final isSelected = additive.isSelected;
+                final isSelected = teaState.additives.contains(additive.name);
 
                 return CheckboxListTile(
                   title: Text(additive.name, style: Theme.of(context).textTheme.bodyLarge),
@@ -39,7 +40,7 @@ class AdditivesPage extends ConsumerWidget {
                   onChanged: (bool? value){
                     if (value != null){
 
-                      ref.read(teaProvider.notifier).toggleAdditive(additive.name);
+                      teaViewModel.toggleAdditive(additive.name);
                       value = isSelected;
                     }
                       

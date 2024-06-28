@@ -11,6 +11,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(changeThemeNotifierProvider);
+    const String teaIconPath = 'assets/tea-svgrepo-com.svg';
 
     return Scaffold(
       appBar: AppBar(
@@ -21,6 +22,8 @@ class HomePage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: 
           [
+            
+
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.secondary,

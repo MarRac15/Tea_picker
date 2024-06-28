@@ -19,7 +19,12 @@ class MoodPage extends ConsumerWidget {
             SizedBox(height: 40,),
             
             ListTile(
-              title: Text('Sleepy', style: Theme.of(context).textTheme.bodyLarge),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Sleepy', style: Theme.of(context).textTheme.bodyLarge)
+                  ]
+                  ),
               onTap: (){
                 teaViewModel.setMood('sleepy');
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> IntensityPage()));
@@ -30,7 +35,12 @@ class MoodPage extends ConsumerWidget {
             SizedBox(height: 40,),
 
             ListTile(
-              title: Text('Joyful', style: Theme.of(context).textTheme.bodyLarge),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Joyful', style: Theme.of(context).textTheme.bodyLarge)
+                  ]
+                  ),
               onTap: (){
                 teaViewModel.setMood('joyful');
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> IntensityPage()));
@@ -41,7 +51,12 @@ class MoodPage extends ConsumerWidget {
             SizedBox(height: 40,),
 
             ListTile(
-              title: Text('Stressed', style: Theme.of(context).textTheme.bodyLarge),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Stressed', style: Theme.of(context).textTheme.bodyLarge)
+                  ]
+                  ),
               onTap: (){
                 teaViewModel.setMood('stressed');
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> IntensityPage()));
@@ -52,7 +67,12 @@ class MoodPage extends ConsumerWidget {
             SizedBox(height: 40,),
 
             ListTile(
-              title: Text('I do not know!', style: Theme.of(context).textTheme.bodyLarge),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('I do not know', style: Theme.of(context).textTheme.bodyLarge)
+                  ]
+                  ),
               onTap: (){
                 teaViewModel.setMood('nothing');
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> IntensityPage()));

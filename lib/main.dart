@@ -10,12 +10,13 @@ import 'package:firebase_core/firebase_core.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    //name: 'teaPicker',
     options: FirebaseOptions(
     apiKey: 'key',
     appId: '1:1053100711838:android:cf646d6a84017d32c7408f',
     messagingSenderId: 'sendid',
     projectId: 'teapicker-6a476',
-    storageBucket: 'myapp-b9yt18.appspot.com',
+    storageBucket: 'hellothere.com',
   )
   );
   

@@ -4,6 +4,7 @@ import 'package:tea_picker/viewModels/teaViewModel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tea_picker/views/catalog_page.dart';
 import 'package:tea_picker/views/creator_screens/taste_page.dart';
+import 'package:tea_picker/views/home_page.dart';
 
 class ResultsPage extends ConsumerWidget {
 
@@ -28,12 +29,12 @@ class ResultsPage extends ConsumerWidget {
           padding: const EdgeInsets.all(16.0),
           child: Center(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TextField(
                   controller: _nameController,
                   decoration: InputDecoration(
-                    labelText: 'Your tea name',
+                    labelText: 'Enter name for your tea',
                   ),
                   onChanged: (value){
                     teaViewModel.setName(value);
@@ -42,13 +43,59 @@ class ResultsPage extends ConsumerWidget {
           
                 SizedBox(height: 20,),
           
-                Text('Type: ${tea.type}', style: Theme.of(context).textTheme.bodyLarge),
-                Text('Taste: ${tea.taste}', style: Theme.of(context).textTheme.bodyLarge),
-                Text('Mood: ${tea.mood}', style: Theme.of(context).textTheme.bodyLarge),
-                Text('Intensity: ${tea.intensity}', style: Theme.of(context).textTheme.bodyLarge),
-                Text('Additives: ', style: Theme.of(context).textTheme.bodyLarge),
-                ...TeaViewModel.buildAdditivesList(tea.additives, Theme.of(context).textTheme.bodyLarge!),
-          
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                  padding: EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    borderRadius: BorderRadius.circular(8.0)
+                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          text: 'Type: ',
+                           style: Theme.of(context).textTheme.displayLarge,
+                           children: <TextSpan>[
+                            TextSpan(text: '         ${tea.type}', style: Theme.of(context).textTheme.bodyLarge)
+                           ]
+                      )),
+                      RichText(
+                        text: TextSpan(
+                          text: 'Taste: ',
+                           style: Theme.of(context).textTheme.displayLarge,
+                           children: <TextSpan>[
+                            TextSpan(text: '        ${tea.taste}', style: Theme.of(context).textTheme.bodyLarge)
+                           ]
+                      )),
+                      RichText(
+                        text: TextSpan(
+                          text: 'Mood: ',
+                           style: Theme.of(context).textTheme.displayLarge,
+                           children: <TextSpan>[
+                            TextSpan(text: '        ${tea.mood}', style: Theme.of(context).textTheme.bodyLarge)
+                           ]
+                      )),
+                      RichText(
+                        text: TextSpan(
+                          text: 'Intensity: ',
+                           style: Theme.of(context).textTheme.displayLarge,
+                           children: <TextSpan>[
+                            TextSpan(text: '  ${tea.intensity}', style: Theme.of(context).textTheme.bodyLarge)
+                           ]
+                      )),
+                      RichText(
+                        text: TextSpan(
+                          text: 'Additives: ',
+                           style: Theme.of(context).textTheme.displayLarge,
+                           children: <TextSpan>[
+                            TextSpan(text: '${tea.additives.join(', ')}', style: Theme.of(context).textTheme.bodyLarge)
+                           ]
+                      )),
+                    ],
+                  ),
+                ),          
                 SizedBox(height: 40,),
         
                 Row(
@@ -77,19 +124,29 @@ class ResultsPage extends ConsumerWidget {
                       onPressed: () async{
                         Navigator.push(context, MaterialPageRoute(builder: (context) => CatalogPage()));
                       }, 
-                      child: Text('Back to your catalog', style: Theme.of(context).textTheme.bodyLarge)
-                      ),
-        
-                ],
-                )
-          
-               
-              ]
-              ),
-          
-          ),
+                      child: Text('See it in your catalog', style: Theme.of(context).textTheme.bodyLarge)
+                      ),        
+                    ],
+                  )                        
+                ]
+              ),         
+          ),       
         ),
-      )
+      ),
+      bottomNavigationBar: BottomAppBar(
+        height: 60,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(onPressed: (){
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context)=> HomePage()),
+                (route)=> false);
+            },
+             icon: Icon(Icons.home))
+          ],
+        )),
     );
   }
 }

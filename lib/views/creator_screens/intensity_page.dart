@@ -20,7 +20,12 @@ class IntensityPage extends ConsumerWidget {
             SizedBox(height: 40,),
             
             ListTile(
-              title: Text('Strong', style: Theme.of(context).textTheme.bodyLarge),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Strong', style: Theme.of(context).textTheme.bodyLarge)
+                  ]
+                  ),
               onTap: (){
                 teaViewModel.setIntensity('strong');
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> AdditivesPage()));
@@ -31,7 +36,12 @@ class IntensityPage extends ConsumerWidget {
             SizedBox(height: 40,),
 
             ListTile(
-              title: Text('Medium', style: Theme.of(context).textTheme.bodyLarge),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Medium', style: Theme.of(context).textTheme.bodyLarge)
+                  ]
+                  ),
               onTap: (){
                 teaViewModel.setIntensity('medium');
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> AdditivesPage()));
@@ -42,7 +52,12 @@ class IntensityPage extends ConsumerWidget {
             SizedBox(height: 40,),
 
             ListTile(
-              title: Text('Mild', style: Theme.of(context).textTheme.bodyLarge),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Mild', style: Theme.of(context).textTheme.bodyLarge)
+                  ]
+                  ),
               onTap: (){
                 teaViewModel.setIntensity('mild');
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> AdditivesPage()));
