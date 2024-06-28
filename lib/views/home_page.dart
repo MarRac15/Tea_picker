@@ -16,13 +16,27 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Welcome to Tea Creator', style: Theme.of(context).textTheme.displayLarge),
+        actions: [
+          Switch(
+                value: themeMode == AppThemeMode.Dark, 
+                onChanged: (value){
+                  final notifier = ref.read(changeThemeNotifierProvider.notifier);
+                  notifier.switchTheme();
+                },
+                activeColor: AppTheme.primaryColor,
+                inactiveTrackColor: AppTheme.accentColor,
+                )
+          
+        ],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: 
           [
-            
+            Icon(Icons.coffee_sharp, size: 128,),
+
+            SizedBox(height: 20,),
 
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -32,6 +46,8 @@ class HomePage extends ConsumerWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => TypePage()));
               },
                child: Text('Create your tea', style: Theme.of(context).textTheme.bodyLarge)),
+
+               SizedBox(height: 10,),
 
                ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -43,16 +59,9 @@ class HomePage extends ConsumerWidget {
                child: Text('Visit your catalog', style: Theme.of(context).textTheme.bodyLarge)
                ),
 
-               Text('change theme: ', style: Theme.of(context).textTheme.bodyLarge),
-               Switch(
-                value: themeMode == AppThemeMode.Dark, 
-                onChanged: (value){
-                  final notifier = ref.read(changeThemeNotifierProvider.notifier);
-                  notifier.switchTheme();
-                },
-                activeColor: AppTheme.primaryColor,
-                inactiveTrackColor: AppTheme.accentColor,
-                )
+               SizedBox(height: 20,),
+
+               
           ],
         ),
       )
